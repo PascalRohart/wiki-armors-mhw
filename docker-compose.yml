@@ -1,0 +1,74 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
+      MARIADB_DATABASE: wikimhw
+      MARIADB_USER: wikimhw
+      MARIADB_PASSWORD: wikimhw
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+    networks:
+      - web
+      - default
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    restart: unless-stopped
+    user: 1000:1000
+    environment:
+      DB_HOST: db
+      DB_DATABASE: wikimhw
+      DB_USERNAME: wikimhw
+      DB_PASSWORD: wikimhw
+      FORCE_SSL: 0
+    env_file:
+      - dev.env
+    volumes:
+      - ./src/:/usr/src/app/
+      - ./src/storage/app/:/usr/src/app/storage/app/
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - web
+      - default
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./src/storage/app/:/usr/src/app_data/
+      - ./src/public/:/usr/src/app/
+    depends_on:
+      - php
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.wikimhw.rule=Host(`wikimhw.labs`)
+      - traefik.http.routers.wikimhw.entrypoints=web
+    networks:
+      - web
+      - default
+
+volumes:
+  db:
+    labels:
+      backup_flag: true
+
+networks:
+  web:
+    external: true
+
