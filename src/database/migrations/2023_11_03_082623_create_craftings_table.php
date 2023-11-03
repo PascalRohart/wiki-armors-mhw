@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('craftings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_materials_list_to_craft')->nullable();
             $table->timestamps();
         });
     }

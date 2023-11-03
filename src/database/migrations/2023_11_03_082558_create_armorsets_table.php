@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('armorsets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_rank')->nullable();
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('id_armorset_pieces')->nullable();
+            $table->integer('bonus')->nullable();
             $table->timestamps();
         });
     }

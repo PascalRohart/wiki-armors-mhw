@@ -15,21 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->nullable();
             $table->string('name')->nullable();
-            $table->string('type')->nullable();
-            $table->string('rank')->nullable();
+            $table->unsignedBigInteger('id_type')->nullable();
+            $table->unsignedBigInteger('id_rank')->nullable();
             $table->integer('rarity')->nullable();
             $table->integer('defense_base')->nullable();
-            $table->integer('defense_augmented')->nullable();
+            $table->integer('defense_max')->nullable();
+            $table->unsignedBigInteger('id_resistance')->nullable();
+            $table->unsignedBigInteger('id_skill')->nullable();
+            $table->unsignedBigInteger('id_armorset')->nullable();
             $table->integer('slots')->nullable();
-
-            // TABLE TYPE WITH FK ID_TYPE
-            // TABLE RANK WITH FK ID_RANK
-            // TABLE RESISTANCES
-            // TABLE ATTRIBUTES
-            // TABLE SKILLS
-            // TABLE ARMORSETS WITH FOREIGN KEY
-            // TABLE ASSETS
-            // TABLE CRAFTING
+            $table->unsignedBigInteger('id_crafting')->nullable();
 
             $table->timestamps();
         });

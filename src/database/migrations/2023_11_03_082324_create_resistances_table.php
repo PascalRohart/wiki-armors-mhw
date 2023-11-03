@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('resistances', function (Blueprint $table) {
             $table->id();
+            $table->integer('fire')->nullable();
+            $table->integer('water')->nullable();
+            $table->integer('ice')->nullable();
+            $table->integer('thunder')->nullable();
+            $table->integer('dragon')->nullable();
             $table->timestamps();
         });
     }
