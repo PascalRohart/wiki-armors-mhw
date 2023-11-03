@@ -1,1 +1,1 @@
-# wiki-armor-mhw
+# wiki-armors-mhw
