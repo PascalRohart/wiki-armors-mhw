@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('armorset_pieces', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_piece')->nullable();
+            $table->unsignedBigInteger('id_armorset')->nullable();
             $table->timestamps();
         });
     }

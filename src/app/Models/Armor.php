@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Armor extends Model
 {
     use HasFactory;
 
-    /*public function type(): BelongsTo {
+    public function type(): BelongsTo {
         return $this->belongsTo(Type::class);
     }
 
@@ -19,8 +21,8 @@ class Armor extends Model
         return $this->belongsTo(Rank::class);
     }
 
-    public function resistance(): BelongsTo {
-        return $this->belongsTo(Resistance::class);
+    public function resistance(): HasOne {
+        return $this->hasOne(Resistance::class);
     }
 
     public function skill(): BelongsTo {
@@ -31,7 +33,11 @@ class Armor extends Model
         return $this->belongsTo(Armorset::class);
     }
 
-    public function crafting(): BelongsTo {
-        return $this->belongsTo(Crafting::class);
-    }*/
+    public function asset(): HasMany {
+        return $this->hasMany(Asset::class);
+    }
+
+    public function crafting(): HasOne {
+        return $this->hasOne(Crafting::class);
+    }
 }

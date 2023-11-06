@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('materials_lists_to_craft', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity')->nullable();
-            $table->unsignedBigInteger('id_item')->nullable();
+            $table->unsignedBigInteger('id_item_quantity_mapping')->nullable();
             $table->timestamps();
         });
     }

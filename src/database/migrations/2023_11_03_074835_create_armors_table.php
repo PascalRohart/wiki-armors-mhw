@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_resistance')->nullable();
             $table->unsignedBigInteger('id_skill')->nullable();
             $table->unsignedBigInteger('id_armorset')->nullable();
+            $table->unsignedBigInteger('id_asset')->nullable();
             $table->integer('slots')->nullable();
             $table->unsignedBigInteger('id_crafting')->nullable();
 

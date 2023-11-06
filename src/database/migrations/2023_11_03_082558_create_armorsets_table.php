@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_rank')->nullable();
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('id_armorset_pieces')->nullable();
+            //$table->unsignedBigInteger('id_armorset_pieces')->nullable();
             $table->integer('bonus')->nullable();
             $table->timestamps();
         });
