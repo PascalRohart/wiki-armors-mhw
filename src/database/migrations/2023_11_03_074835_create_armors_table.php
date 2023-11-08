@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('armors', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->nullable();
             $table->string('name')->nullable();
             $table->unsignedBigInteger('id_type')->nullable();
             $table->unsignedBigInteger('id_rank')->nullable();

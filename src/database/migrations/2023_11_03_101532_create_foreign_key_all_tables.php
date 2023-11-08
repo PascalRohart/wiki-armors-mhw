@@ -23,11 +23,10 @@ return new class extends Migration
 
         Schema::table('armorsets', function (Blueprint $table) {
             $table->foreign('id_rank')->references('id')->on('ranks');
-            //$table->foreign('id_armorset_pieces')->references('id')->on('armorset_pieces');
         });
 
-        Schema::table('craftings', function (Blueprint $table) {
-            $table->foreign('id_materials_list_to_craft')->references('id')->on('materials_lists_to_craft');
+        Schema::table('materials_lists_to_craft', function (Blueprint $table) {
+            $table->foreign('id_crafting')->references('id')->on('craftings');
         });
 
         Schema::table('armorset_pieces', function (Blueprint $table) {

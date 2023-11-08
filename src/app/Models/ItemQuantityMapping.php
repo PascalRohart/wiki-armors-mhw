@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MaterialsListToCraft extends Model
+class ItemQuantityMapping extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,5 @@ class MaterialsListToCraft extends Model
      *
      * @var string
      */
-    protected $table = 'materials_lists_to_craft';
+    protected $table = 'items_quantities_mappings';
 }

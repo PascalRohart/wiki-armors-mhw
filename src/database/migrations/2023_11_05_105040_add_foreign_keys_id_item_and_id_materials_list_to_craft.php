@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materials_lists_to_craft', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_crafting')->nullable();
-            $table->timestamps();
+        Schema::table('items_quantities_mappings', function (Blueprint $table) {
+            $table->foreign('id_materials_list_to_craft')->references('id')->on('materials_lists_to_craft');
+            $table->foreign('id_item')->references('id')->on('items');
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materials_lists_to_craft');
+        //
     }
 };

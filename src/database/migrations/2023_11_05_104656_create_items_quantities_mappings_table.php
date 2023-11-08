@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materials_lists_to_craft', function (Blueprint $table) {
+        Schema::create('items_quantities_mappings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_crafting')->nullable();
+            $table->unsignedBigInteger('id_materials_list_to_craft')->nullable();
+            $table->integer('quantity_item')->nullable();
+            $table->unsignedBigInteger('id_item')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materials_lists_to_craft');
+        Schema::dropIfExists('list_items');
     }
 };
