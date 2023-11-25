@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class ArmorController extends Controller
 {
     public function index() {
-        $armor = Armor::find(1);
 
-        return view("index",compact('armor'));
+        $armors = Armor::limit(100)->get();
+        return view('armors', compact('armors'));
     }
 }

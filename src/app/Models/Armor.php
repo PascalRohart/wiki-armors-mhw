@@ -14,23 +14,23 @@ class Armor extends Model
     use HasFactory;
 
     public function type(): BelongsTo {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'id_type');
     }
 
     public function rank(): BelongsTo {
-        return $this->belongsTo(Rank::class);
+        return $this->belongsTo(Rank::class, 'id_rank');
     }
 
     public function resistance(): HasOne {
-        return $this->hasOne(Resistance::class);
+        return $this->hasOne(Resistance::class, 'id', 'id_resistance');
     }
 
     public function skill(): BelongsTo {
         return $this->belongsTo(Skill::class);
     }
 
-    public function armorset(): BelongsTo {
-        return $this->belongsTo(Armorset::class);
+    public function armorSet(): BelongsTo {
+        return $this->belongsTo(ArmorSet::class);
     }
 
     public function asset(): HasMany {

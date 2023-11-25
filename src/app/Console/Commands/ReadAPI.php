@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Armor;
-use App\Models\Armorset;
+use App\Models\ArmorSet;
 use App\Models\ArmorsetPiece;
 use App\Models\Asset;
 use App\Models\Crafting;
@@ -103,9 +103,9 @@ class ReadAPI extends Command
                 }
 
                 $data_armorsets = $data['armorSet'];
-                $armorSet = Armorset::find($data_armorsets['id']);
+                $armorSet = ArmorSet::find($data_armorsets['id']);
                 if (!$armorSet) {
-                    $armorSet = new Armorset();
+                    $armorSet = new ArmorSet();
                     $armorSet->id = $data_armorsets['id'];
                     $armorSet->id_rank = $armor->id_rank;
                     $armorSet->name = $data_armorsets['name'];
